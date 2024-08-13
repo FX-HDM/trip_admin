@@ -74,8 +74,8 @@ export default {
   name: 'echartsView',
   data() {
     return {
-      dataList:[],
-      CountData:[],
+      dataList: [],
+      CountData: [],
       TableData: [],
     }
   },
@@ -84,24 +84,24 @@ export default {
     this.findVehicleStatistics();
   },
   methods: {
-    findAggregateStatistics(){
-      $axios.get(json.serviceUrl.echarts.AggregateStatistics).then(res=>{
-        this.CountData=res.data.data;
+    findAggregateStatistics() {
+      $axios.get(json.serviceUrl.echarts.AggregateStatistics).then(res => {
+        this.CountData = res.data.data;
       })
     },
-    findVehicleStatistics(){
-      $axios.get(json.serviceUrl.echarts.VehicleStatistics).then(res=>{
-        this.TableData=res.data.data;
+    findVehicleStatistics() {
+      $axios.get(json.serviceUrl.echarts.VehicleStatistics).then(res => {
+        this.TableData = res.data.data;
       })
     },
     echarts1() {
       const echarts1 = echarts.init(this.$refs.echarts1);
 
-      $axios.get(json.serviceUrl.echarts.BrokenLineChart).then(res=>{
+      $axios.get(json.serviceUrl.echarts.BrokenLineChart).then(res => {
         const array = res.data.data;
         const names = [];
         const nums = [];
-        for(let i=0;i<array.length;i++){
+        for (let i = 0; i < array.length; i++) {
           names.push(array[i].date);
           nums.push(array[i].money);
         }
@@ -111,62 +111,59 @@ export default {
           },
           tooltip: {},
           xAxis: {
-            data:names
+            data: names
           },
           yAxis: {},
           series: [{
             name: '金额',
             type: 'line',
-            data:nums
+            data: nums
           }]
         };
         echarts1.setOption(option);
       })
 
 
-
-
-
-
     },
     echarts2() {
       // 基于准备好的dom，初始化echarts实例
       const echarts2 = echarts.init(this.$refs.echarts2);
-      $axios.get(json.serviceUrl.echarts.BarChart).then(res=>{
+      $axios.get(json.serviceUrl.echarts.BarChart).then(res => {
         const array = res.data.data;
         const names = [];
         const nums = [];
-        for(let i=0;i<array.length;i++){
+        for (let i = 0; i < array.length; i++) {
           names.push(array[i].date);
           nums.push(array[i].num);
         }
-      const option = {
-        title: {
-          text: '订单完成数量'
-        },
-        tooltip: {},
-        legend: {
-          data: ['销量']
-        },
-        xAxis: {
-          data: names
-        },
-        yAxis: {},
-        series: [
-          {
-            name: '销量',
-            type: 'bar',
-            data: nums
-          }
-        ]
-      };
-      echarts2.setOption(option);
-    })
+        const option = {
+          title: {
+            text: '订单完成数量'
+          },
+          tooltip: {},
+          legend: {
+            data: ['销量']
+          },
+          xAxis: {
+            data: names
+          },
+          yAxis: {},
+          series: [
+            {
+              name: '销量',
+              type: 'bar',
+              data: nums
+            }
+          ]
+        };
+        echarts2.setOption(option);
+      })
 
-  },
-  mounted() {
-    this.echarts1()
-    this.echarts2()
+    },
+    mounted() {
+      this.echarts1()
+      this.echarts2()
+    }
   }
 }
 </script>
