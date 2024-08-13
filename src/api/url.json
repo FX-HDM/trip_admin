@@ -1,0 +1,43 @@
+{
+  "proxy": false,
+  "serviceUrl": {
+    "login": {
+      "login": "/service_9001/admin/login"
+    },
+    "user": {
+      "findUserAll": "/service_9001/admin/user_apply/findUserAll"
+    },
+    "user_apply": {
+      "findAll": "/service_9001/admin/user_apply/findAll",
+      "pass": "/service_9001/admin/user_apply/pass",
+      "fail": "/service_9001/admin/user_apply/fail"
+    },
+    "combo": {
+      "adminFindAllCombo": "/service_9001/admin/combo/adminFindAllCombo",
+      "adminFindAll": "/service_9001/admin/coupon/adminFindAll",
+      "saveOrUpdate": "/service_9001/admin/combo/saveOrUpdateCombo",
+      "handleDelete": "/service_9001/admin/combo/deleteComboById"
+    },
+    "coupon": {
+      "findAll": "/service_9001/admin/coupon/findAllCoupon",
+      "saveOrUpdateCoupon": "/service_9001/admin/coupon/saveOrUpdateCoupon",
+      "handleDelete": "/service_9001/admin/coupon/delById"
+    },
+    "complaint": {
+      "findAll": "/service_9004/evaluate/findEvaluate"
+    },
+    "appeal": {
+      "findAll": "/service_9004/representations/findRepresentations",
+      "passAppeal": "/service_9004/representations/pass",
+      "turnDownAppeal":"/service_9004/representations/fail"
+    },
+    "echarts": {
+      "VehicleStatistics": "/service_9001/chart/VehicleStatistics",
+      "AggregateStatistics": "/service_9001/chart/AggregateStatistics",
+      "PieChart": "/service_9001/chart/PieChart",
+      "BrokenLineChart": "/service_9001/chart/BrokenLineChart",
+      "BarChart": "/service_9001/chart/BarChart"
+
+    }
+  }
+}
